@@ -26,7 +26,10 @@ export default function Person({
   };
 
   return (
-    <Link href={`/persons/${id}`} className="flex flex-col relative transition-transform duration-300 hover:scale-105 pb-3">
+    <Link
+      href={`/persons/${id}`}
+      className="flex flex-col relative transition-transform duration-300 hover:scale-105 pb-3 bg-slate-900"
+    >
       {squareImage !== "https:undefined" ? (
         <Image
           width={250}
@@ -37,8 +40,11 @@ export default function Person({
           className="max-w-full max-h-full rounded-md"
         />
       ) : null}
-      <h1 className="text-md pt-2 px-1">{name}</h1>
-      <p className="text-xs opacity-80 px-1">{formatToBillion(netWorth)} Billion / {industries.map(indestry => indestry)} </p>
-    </Link >
+      <h1 className="text-sm pt-2 px-2 pb-1">{name}</h1>
+      <p className="text-xs opacity-80 px-2">
+        {formatToBillion(netWorth)} Billion /{" "}
+        {industries.map((indestry) => indestry)}
+      </p>
+    </Link>
   );
 }
