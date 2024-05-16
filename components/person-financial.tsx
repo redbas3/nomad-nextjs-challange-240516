@@ -1,4 +1,4 @@
-import { getPerson } from "@/app/persons/[id]/page";
+import { API_URL } from "@/app/constants";
 import { formatToDollor } from "@/lib/utils";
 
 interface financialAssetProp {
@@ -12,6 +12,13 @@ interface financialAssetProp {
   exchangeRate: number;
   interactive: Boolean;
   currentPrice: number;
+}
+
+async function getPerson(id: string) {
+  const json = await fetch(`${API_URL}/person/${id}`).then(
+    async (response) => await response.json()
+  );
+  return json;
 }
 
 export default async function PersonFinancial({

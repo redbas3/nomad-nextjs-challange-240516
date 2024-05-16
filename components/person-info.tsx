@@ -1,6 +1,13 @@
-import { getPerson } from "@/app/persons/[id]/page";
+import { API_URL } from "@/app/constants";
 import { formatToBillion } from "@/lib/utils";
 import Image from "next/image";
+
+async function getPerson(id: string) {
+  const json = await fetch(`${API_URL}/person/${id}`).then(
+    async (response) => await response.json()
+  );
+  return json;
+}
 
 export default async function PersonInfo({
   id: { id },
