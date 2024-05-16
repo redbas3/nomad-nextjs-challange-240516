@@ -1,5 +1,6 @@
 "use client";
 
+import { formatToBillion } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -25,7 +26,7 @@ export default function Person({
   };
 
   return (
-    <div className="flex flex-col gap-5 cursor-pointer place-items-center relative">
+    <Link href={`/persons/${id}`} className="flex flex-col relative transition-transform duration-300 hover:scale-105 pb-3">
       {squareImage !== "https:undefined" ? (
         <Image
           width={250}
@@ -33,15 +34,11 @@ export default function Person({
           onClick={onClick}
           src={squareImage}
           alt={name}
-          className="max-w-full max-h-full rounded-lg transition-opacity duration-300 ease-in-out opacity-70 hover:opacity-100"
+          className="max-w-full max-h-full rounded-md"
         />
       ) : null}
-      <Link
-        href={`/persons/${id}`}
-        className="block text-center hover:underline pt-2"
-      >
-        {name}
-      </Link>
-    </div>
+      <h1 className="text-md pt-2 px-1">{name}</h1>
+      <p className="text-xs opacity-80 px-1">{formatToBillion(netWorth)} Billion / {industries.map(indestry => indestry)} </p>
+    </Link >
   );
 }

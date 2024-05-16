@@ -15,7 +15,7 @@ const config: Config = {
       },
       gridTemplateColumns: {
         "1fr_2fr": "1fr 2fr",
-        "person-list": "repeat(4, 200px)",
+        "person-list": "repeat(4, minmax(100px, 1fr))",
       },
     },
   },

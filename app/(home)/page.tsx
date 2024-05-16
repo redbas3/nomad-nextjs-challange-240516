@@ -15,7 +15,7 @@ async function getPersons() {
 export default async function Home() {
   const persons = await getPersons();
   return (
-    <div className="grid grid-cols-person-list gap-5 cursor-pointer w-11/12 mx-auto">
+    <div className="grid grid-cols-person-list gap-5 cursor-pointer w-11/12 mx-auto max-w-4xl">
       {persons.map((person: PersonProps) => (
         <Person key={person.id} {...person} />
       ))}
